@@ -1,5 +1,5 @@
-title: "大齐财经快讯"
-description: "使用 /docs 路径构建，可绑定自定义域名"
+title: "财经快讯"
+description: "全市场精选财经新闻 深度分析 快速总结"
 theme: jekyll-theme-cayman        # GitHub Pages 官方主题之一
 baseurl: "/stocknews"               # 👈 如果仓库不是 username.github.io，请写仓库名
 #url: "https://yourdomain.com"     # 👈 若使用自定义域名，填您的域名，否则可省略
