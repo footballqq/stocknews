@@ -11,7 +11,13 @@ title: "财经博客首页"
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <small>发布于: {{ post.date | date: "%Y-%m-%d" }}</small>
+      <!-- <small>发布于: {{ post.date | date: "%Y-%m-%d" }}</small> -->
+<!-- 使用24小时制 -->
+<small>发布于: {{ post.date | date: "%Y-%m-%d %H:%M" }}</small>
+
+<!-- 或者使用12小时制
+<small>发布于: {{ post.date | date: "%Y-%m-%d %I:%M %p" }}</small> -->
+
     </li>
   {% endfor %}
 </ul>
