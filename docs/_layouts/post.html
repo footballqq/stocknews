@@ -10,24 +10,27 @@
     <header>
       <h1>{{ page.title }}</h1>
       <p>
-        <small>
-          发布于：
-          <time datetime="{{ page.date | date_to_xmlschema }}">
-            {{ page.date | date: "%Y-%m-%d %H:%M" }}
-          </time>
-        </small>
+<small>
+  发布于：
+  <time datetime="{{ page.posttime | date_to_xmlschema }}">
+    {{ page.posttime | date: "%Y-%m-%d %H:%M" }}
+  </time>
+</small>
+
       </p>
     </header>
 
     {{ content }}
   </article>
 
-  <script>
-    // 修正时间显示为浏览器本地时区（如北京时间）
-    document.querySelectorAll('time').forEach(el => {
-      const d = new Date(el.getAttribute('datetime'));
-      el.textContent = d.toLocaleString('zh-CN', { hour12: false });
-    });
-  </script>
+
+<script>
+  document.querySelectorAll('time').forEach(el => {
+    const d = new Date(el.getAttribute('datetime'));
+    el.textContent = d.toLocaleString('zh-CN', { hour12: false });
+  });
+</script>
+
 </body>
 </html>
+

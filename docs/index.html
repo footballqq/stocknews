@@ -15,25 +15,18 @@ title: "财经博客首页"
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       <small>
         发布于：
-        <!-- <time datetime="{{ post.date | date_to_xmlschema }}">
-          {{ post.date | date: "%Y-%m-%d %H:%M" }}
-        </time> -->
-
-<time datetime="{{ post.posttime }}">
-  {{ post.posttime | date: "%Y-%m-%d %H:%M" }}
-</time>
-
-
+        <time datetime="{{ post.posttime | date_to_xmlschema }}">
+          {{ post.posttime | date: "%Y-%m-%d %H:%M" }}
+        </time>
       </small>
     </li>
   {% endfor %}
 </ul>
 
 <script>
-  // 修正时间为浏览器本地时间（即北京时间）
+  // 把 ISO（UTC 或含时区）转为浏览器本地时间显示
   document.querySelectorAll('time').forEach(el => {
-    const d = new Date(el.getAttribute('datetime'));
+    const d = new Date(el.getAttribute('datetime')); // e.g. 2025-10-22T10:45:09+08:00
     el.textContent = d.toLocaleString('zh-CN', { hour12: false });
   });
 </script>
-
