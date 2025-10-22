@@ -6,18 +6,28 @@ title: "财经博客首页"
 <h1>{{ site.title }}</h1>
 <p>{{ site.description }}</p>
 
+
+
 <h2>📰 最新文章：</h2>
 <ul>
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <!-- <small>发布于: {{ post.date | date: "%Y-%m-%d" }}</small> -->
-<!-- 使用24小时制 -->
-<small>发布于: {{ post.date | date: "%Y-%m-%d %H:%M" }}</small>
-
-<!-- 或者使用12小时制
-<small>发布于: {{ post.date | date: "%Y-%m-%d %I:%M %p" }}</small> -->
-
+      <small>
+        发布于：
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%Y-%m-%d %H:%M" }}
+        </time>
+      </small>
     </li>
   {% endfor %}
 </ul>
+
+<script>
+  // 修正时间为浏览器本地时间（即北京时间）
+  document.querySelectorAll('time').forEach(el => {
+    const d = new Date(el.getAttribute('datetime'));
+    el.textContent = d.toLocaleString('zh-CN', { hour12: false });
+  });
+</script>
+
