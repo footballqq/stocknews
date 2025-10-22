@@ -2,34 +2,36 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/nice.css' | relative_url }}">
 </head>
-<body>
-  <article id="nice">
-    <header>
-      <h1>{{ page.title }}</h1>
-      <p>
-<small>
-  发布于：
-  <time datetime="{{ page.posttime | date_to_xmlschema }}">
-    {{ page.posttime | date: "%Y-%m-%d %H:%M" }}
-  </time>
-</small>
+  <body>
+    <div class="site-wrapper">
+      <article id="nice">
+        <header>
+          <h1>{{ page.title }}</h1>
+          <p>
+            <small>
+              发布于：
+              <time datetime="{{ page.posttime | date_to_xmlschema }}">
+                {{ page.posttime | date: "%Y-%m-%d %H:%M" }}
+              </time>
+            </small>
+          </p>
+        </header>
 
-      </p>
-    </header>
+        {{ content }}
+      </article>
+    </div>
 
-    {{ content }}
-  </article>
-
-
-<script>
-  document.querySelectorAll('time').forEach(el => {
-    const d = new Date(el.getAttribute('datetime'));
-    el.textContent = d.toLocaleString('zh-CN', { hour12: false });
-  });
-</script>
+    <script>
+      document.querySelectorAll('time').forEach(el => {
+        const d = new Date(el.getAttribute('datetime'));
+        el.textContent = d.toLocaleString('zh-CN', { hour12: false });
+      });
+    </script>
 
 </body>
 </html>
