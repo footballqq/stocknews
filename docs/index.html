@@ -15,9 +15,15 @@ title: "财经博客首页"
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       <small>
         发布于：
-        <time datetime="{{ post.date | date_to_xmlschema }}">
+        <!-- <time datetime="{{ post.date | date_to_xmlschema }}">
           {{ post.date | date: "%Y-%m-%d %H:%M" }}
-        </time>
+        </time> -->
+
+<time datetime="{{ post.posttime }}">
+  {{ post.posttime | date: "%Y-%m-%d %H:%M" }}
+</time>
+
+
       </small>
     </li>
   {% endfor %}
